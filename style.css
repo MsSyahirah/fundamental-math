@@ -1,0 +1,175 @@
+/* ======================================================
+   🟩 SAFE TO EDIT: colours below (background, accent)
+   ====================================================== */
+:root{
+  --bg1:#FFF6E5;   /* softer cream = welcoming */
+  --bg2:#EAF4FF;   /* calmer blue = safety */
+  --ink:#111827;
+  --muted:#6B7280;
+  --card:#FFFFFF;
+  --stroke:rgba(17,24,39,.10);
+  --accent:#2563EB;
+}
+
+/* 🚫 Generally do not touch layout unless you want redesign */
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  color:var(--ink);
+
+  /* 🟩 SAFE TO EDIT: background feel */
+  background:
+    radial-gradient(1200px 600px at 15% 10%, var(--bg1), transparent 60%),
+    radial-gradient(1200px 600px at 80% 20%, var(--bg2), transparent 55%),
+    linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+/* Sidebar */
+.sidebar{
+  width:260px;
+  padding:18px 16px;
+  border-right:1px solid var(--stroke);
+  background:rgba(255,255,255,.75);
+  position:fixed;
+  height:100%;
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  padding-bottom:14px;
+}
+
+.logo{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  /* 🟩 SAFE TO EDIT: logo colour */
+  background:linear-gradient(135deg, var(--accent), #60A5FA);
+
+  color:white;
+  font-weight:800;
+}
+
+.title{ font-weight:800; font-size:14px; }
+.subtitle{ font-size:12px; color:var(--muted); }
+
+.nav-section{
+  font-size:11px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:14px 8px 6px;
+}
+
+.nav-link{
+  display:block;
+  margin:6px;
+  padding:10px;
+  border-radius:12px;
+  text-decoration:none;
+  color:var(--ink);
+  font-weight:700;
+  font-size:13px;
+}
+
+.nav-link:hover{
+  background:rgba(37,99,235,.08);
+}
+
+.nav-link.disabled{
+  pointer-events:none;
+  opacity:0.4;
+}
+
+.sidebar-footer{
+  position:absolute;
+  bottom:16px;
+  left:16px;
+  right:16px;
+  display:flex;
+  gap:10px;
+}
+
+.pill{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(245,158,11,.14);
+}
+
+/* Content */
+.content{
+  margin-left:260px;
+  padding:26px 22px;
+  max-width:960px;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:18px;
+  margin:14px 0;
+  box-shadow:0 10px 22px rgba(0,0,0,.06);
+}
+
+.hero h1{
+  margin:0 0 8px;
+}
+
+.muted{ color:var(--muted); }
+
+.btn{
+  margin-top:14px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:none;
+
+  /* 🟩 SAFE TO EDIT: button colour */
+  background:var(--accent);
+
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* Proceed-to-quiz button is welcoming green */
+.proceed{
+  background:linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.hidden{ display:none; }
+
+footer{
+  margin:24px 0;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* Mobile */
+@media (max-width:800px){
+  .sidebar{
+    position:static;
+    width:100%;
+    height:auto;
+    border-right:none;
+    border-bottom:1px solid var(--stroke);
+  }
+  .content{
+    margin-left:0;
+  }
+}
