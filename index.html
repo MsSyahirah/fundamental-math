@@ -1,147 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Foundation Mathematics </title></title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="app">
+<header class="top">
+  <div class="container brand">
 
-  <!-- ======================================================
-       🟩 SAFE TO EDIT: Sidebar labels (text only)
-       🚫 DO NOT CHANGE: href="#topic-..." or id="link-quiz-..."
-       ====================================================== -->
-  <aside class="sidebar">
-    <div class="brand">
-      <div class="logo">∑</div>
-      <div>
-        <div class="title">Math Bridging Hub</div>
-        <div class="subtitle">Welcome — take it step by step</div>
-      </div>
+    <div class="logo">∑</div>
+
+    <div>
+      <h1>Foundation Math Hub</h1>
+      <p>Anytime learning for foundational mathematics</p>
     </div>
 
-    <div class="nav-section">Topics</div>
-    <a class="nav-link" href="#topic-unit">1. Unit Conversion</a>
-    <a class="nav-link" href="#topic-algebra">2. Algebraic Formula</a>
+  </div>
+</header>
 
-    <div class="nav-section">Quizzes</div>
-    <a class="nav-link disabled" id="link-quiz-unit" href="#quiz-unit">Unit Conversion Quiz</a>
-    <a class="nav-link disabled" id="link-quiz-algebra" href="#quiz-algebra">Algebra Quiz</a>
+<main class="container">
 
-    <div class="sidebar-footer">
-      <div class="pill">Pilot only</div>
-      <div class="pill">No grades</div>
+  <!-- ================= PROGRESS PANEL ================= -->
+
+  <section class="panel" id="progressPanel">
+
+    <div class="row">
+      <h2>Your Progress</h2>
+
+      <button class="btn ghost" id="resetBtn">
+        Reset
+      </button>
     </div>
-  </aside>
 
-  <main class="content">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
 
-    <!-- ======================================================
-         🟩 SAFE TO EDIT: Welcome text
-         ====================================================== -->
-    <section class="card hero">
-      <div>
-        <h1>Welcome 👋</h1>
-        <p class="muted">
-          Revise first, then attempt the quiz when you feel ready.
-          This page is here to support you.
-        </p>
-      </div>
-    </section>
+    <p id="progressText">
+      0 / 3 Main Topics Completed
+    </p>
 
-    <!-- ======================================================
-         TOPIC 1
-         🚫 DO NOT CHANGE: id="topic-unit"
-         🟩 SAFE TO EDIT: all text + video link
-         ====================================================== -->
-    <section class="card" id="topic-unit">
-      <h2>Topic 1: Unit Conversion</h2>
+  </section>
 
-      <!-- 🟩 SAFE TO EDIT: intro -->
-      <p class="muted">Common difficulty: mixing up × and ÷.</p>
+  <!-- ================= HOME PAGE ================= -->
 
-      <h3>Watch</h3>
+  <section class="panel" id="homePage">
 
-      <!-- 🟩 SAFE TO EDIT: replace ONLY the link inside quotes -->
-      <!-- VIDEO LINK: UNIT CONVERSION -->
-      <p>
-        <a href="PASTE_UNIT_CONVERSION_VIDEO_LINK_HERE" target="_blank">
-          Watch: Unit Conversion (5–8 min)
-        </a>
-      </p>
-      <!-- END VIDEO LINK -->
+    <h2>Choose a Topic</h2>
 
-      <!-- 🟩 SAFE TO EDIT: steps -->
-      <h3>Guided steps</h3>
-      <ol>
-        <li>Write what is given</li>
-        <li>Write what you want to find</li>
-        <li>Choose a factor so units cancel</li>
-        <li>Sense-check your answer</li>
-      </ol>
+    <p class="muted">
+      Select a topic to begin your learning journey.
+    </p>
 
-      <!-- 🚫 DO NOT TOUCH: button onclick -->
-      <button class="btn proceed" onclick="unlockQuiz('unit')">
-        I’ve completed the revision → Go to Quiz
-      </button>
-    </section>
+    <div class="grid" id="topicContainer"></div>
 
-    <!-- ======================================================
-         TOPIC 2
-         🚫 DO NOT CHANGE: id="topic-algebra"
-         🟩 SAFE TO EDIT: all text + video link
-         ====================================================== -->
-    <section class="card" id="topic-algebra">
-      <h2>Topic 2: Manipulation of Algebraic Formula</h2>
+  </section>
 
-      <h3>Watch</h3>
+  <!-- ================= SUBTOPIC PAGE ================= -->
 
-      <!-- 🟩 SAFE TO EDIT: replace ONLY the link inside quotes -->
-      <!-- VIDEO LINK: ALGEBRA -->
-      <p>
-        <a href="PASTE_ALGEBRA_VIDEO_LINK_HERE" target="_blank">
-          Watch: Rearranging Algebraic Formula (5–8 min)
-        </a>
-      </p>
-      <!-- END VIDEO LINK -->
+  <section class="panel hidden" id="subtopicPage">
 
-      <!-- 🟩 SAFE TO EDIT: steps -->
-      <h3>Guided steps</h3>
-      <ol>
-        <li>Identify the subject</li>
-        <li>Undo operations step by step</li>
-        <li>Keep both sides balanced</li>
-        <li>Substitute to check</li>
-      </ol>
+    <button class="btn ghost" id="backHome">
+      ← Back to Topics
+    </button>
 
-      <!-- 🚫 DO NOT TOUCH: button onclick -->
-      <button class="btn proceed" onclick="unlockQuiz('algebra')">
-        I’ve completed the revision → Go to Quiz
-      </button>
-    </section>
+    <h2 id="topicTitle"></h2>
 
-    <!-- ======================================================
-         QUIZZES (hidden until unlocked)
-         🚫 DO NOT CHANGE: ids "quiz-unit", "quiz-algebra"
-         🟩 SAFE TO EDIT: quiz text later
-         ====================================================== -->
-    <section class="card hidden" id="quiz-unit">
-      <h2>Unit Conversion Quiz</h2>
-      <p class="muted">🟩 SAFE TO EDIT: quiz questions will go here later.</p>
-    </section>
+    <p class="muted" id="topicDescription"></p>
 
-    <section class="card hidden" id="quiz-algebra">
-      <h2>Algebra Quiz</h2>
-      <p class="muted">🟩 SAFE TO EDIT: quiz questions will go here later.</p>
-    </section>
+    <div class="subgrid" id="subtopicContainer"></div>
 
-    <footer>
-      Prototype only • No data collected • Not an assessment tool
-    </footer>
+  </section>
 
-  </main>
-</div>
-<script src="script.js"></script>
-</body>
-</html>
+  <!-- ================= LESSON PAGE ================= -->
+
+  <section class="panel hidden" id="lessonPage">
+
+    <button class="btn ghost" id="backSubtopics">
+      ← Back to Subtopics
+    </button>
+
+    <h2 id="lessonTitle"></h2>
+
+    <p class="muted" id="lessonFlow"></p>
+
+    <!-- Dynamic lesson content loads here -->
+    <div id="lessonContent"></div>
+
+  </section>
+
+</main>
