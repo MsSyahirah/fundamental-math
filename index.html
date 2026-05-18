@@ -1,271 +1,85 @@
-# Foundation Math Hub V2 – Clean Structure
+<header class="top">
+  <div class="container brand">
 
-## index.html
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundation Math Hub</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="sidebar">
-  <div class="brand">
     <div class="logo">∑</div>
+
     <div>
-      <h2>Foundation Math Hub</h2>
-      <p>Take it step-by-step</p>
-    </div>
-  </div>
-
-  <div class="menu-section">
-    <h4>TOPICS</h4>
-
-    <button class="menu-btn" onclick="showTopic('algebra')">
-      Algebraic Expressions
-    </button>
-
-    <button class="menu-btn disabled">
-      Fractions & Rational Expressions
-    </button>
-
-    <button class="menu-btn disabled">
-      Functions & Graphs
-    </button>
-  </div>
-</div>
-
-<div class="main-content">
-
-  <div class="welcome-card">
-    <h1>Welcome 👋</h1>
-    <p>
-      Revise first, then attempt the understanding check when you feel ready.
-    </p>
-  </div>
-
-  <div class="topic-card" id="algebra-topic">
-
-    <h2>Topic: Algebraic Expressions</h2>
-
-    <p class="difficulty">
-      Common difficulty: simplifying and combining like terms.
-    </p>
-
-    <h3>Watch</h3>
-
-    <a href="https://www.youtube.com/" target="_blank">
-      Watch: Introduction to Algebraic Expressions (5–8 min)
-    </a>
-
-    <h3>Guided Steps</h3>
-
-    <ol>
-      <li>Identify the like terms</li>
-      <li>Combine coefficients carefully</li>
-      <li>Simplify step-by-step</li>
-      <li>Check your final expression</li>
-    </ol>
-
-    <div class="practice-box">
-      <h3>Quick Practice</h3>
-
-      <p>Simplify:</p>
-      <p><strong>3x + 2x</strong></p>
-
-      <button onclick="showAnswer()" class="answer-btn">
-        Show Answer
-      </button>
-
-      <p id="answer" class="hidden-answer">
-        Answer: 5x
-      </p>
+      <h1>Foundation Math Hub</h1>
+      <p>Anytime learning for foundational mathematics</p>
     </div>
 
-    <a href="PASTE_YOUR_MICROSOFT_FORMS_LINK_HERE" target="_blank">
-      <button class="quiz-btn">
-        Submit Understanding Check
-      </button>
-    </a>
-
   </div>
+</header>
 
-</div>
+<main class="container">
 
-<script src="script.js"></script>
-</body>
-</html>
-```
+  <!-- ================= PROGRESS PANEL ================= -->
 
----
+  <section class="panel" id="progressPanel">
 
-## style.css
+    <div class="row">
+      <h2>Your Progress</h2>
 
-```css
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f9;
-  display: flex;
-}
+      <button class="btn ghost" id="resetBtn">
+        Reset
+      </button>
+    </div>
 
-.sidebar {
-  width: 260px;
-  min-height: 100vh;
-  background: white;
-  border-right: 1px solid #ddd;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 40px;
-}
+    <p id="progressText">
+      0 / 3 Main Topics Completed
+    </p>
 
-.logo {
-  background: #1e3a8a;
-  color: white;
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
+  </section>
 
-.brand h2 {
-  margin: 0;
-}
+  <!-- ================= HOME PAGE ================= -->
 
-.brand p {
-  margin: 0;
-  color: gray;
-  font-size: 14px;
-}
+  <section class="panel" id="homePage">
 
-.menu-section h4 {
-  color: gray;
-  font-size: 13px;
-}
+    <h2>Choose a Topic</h2>
 
-.menu-btn {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: none;
-  background: #eef2ff;
-  border-radius: 10px;
-  cursor: pointer;
-  text-align: left;
-  font-weight: bold;
-}
+    <p class="muted">
+      Select a topic to begin your learning journey.
+    </p>
 
-.menu-btn:hover {
-  background: #dbeafe;
-}
+    <div class="grid" id="topicContainer"></div>
 
-.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
+  </section>
 
-.main-content {
-  flex: 1;
-  padding: 40px;
-}
+  <!-- ================= SUBTOPIC PAGE ================= -->
 
-.welcome-card,
-.topic-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
+  <section class="panel hidden" id="subtopicPage">
 
-.welcome-card h1 {
-  margin-top: 0;
-}
+    <button class="btn ghost" id="backHome">
+      ← Back to Topics
+    </button>
 
-.difficulty {
-  color: #666;
-}
+    <h2 id="topicTitle"></h2>
 
-.practice-box {
-  background: #f9fafb;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-}
+    <p class="muted" id="topicDescription"></p>
 
-.answer-btn,
-.quiz-btn {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-}
+    <div class="subgrid" id="subtopicContainer"></div>
 
-.answer-btn {
-  background: #dbeafe;
-}
+  </section>
 
-.quiz-btn {
-  margin-top: 20px;
-  background: #16a34a;
-  color: white;
-}
+  <!-- ================= LESSON PAGE ================= -->
 
-.hidden-answer {
-  display: none;
-  margin-top: 15px;
-  font-weight: bold;
-}
-```
+  <section class="panel hidden" id="lessonPage">
 
----
+    <button class="btn ghost" id="backSubtopics">
+      ← Back to Subtopics
+    </button>
 
-## script.js
+    <h2 id="lessonTitle"></h2>
 
-```javascript
-function showAnswer() {
-  document.getElementById("answer").style.display = "block";
-}
+    <p class="muted" id="lessonFlow"></p>
 
-function showTopic(topic) {
-  alert(topic + " selected.");
-}
-```
+    <!-- Dynamic lesson content loads here -->
+    <div id="lessonContent"></div>
 
----
+  </section>
 
-## Important
-
-Replace:
-
-```html
-PASTE_YOUR_MICROSOFT_FORMS_LINK_HERE
-```
-
-with your actual Microsoft Forms link.
-
----
-
-## GitHub Upload Structure
-
-Your repository should contain ONLY:
-
-* index.html
-* style.css
-* script.js
-
-All in the same folder.
+</main>
