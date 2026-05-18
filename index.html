@@ -1,104 +1,271 @@
+# Foundation Math Hub V2 – Clean Structure
+
+## index.html
+
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Foundation Math Hub</title>
-
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="top">
-  <div class="container brand">
-
+<div class="sidebar">
+  <div class="brand">
     <div class="logo">∑</div>
-
     <div>
-      <h1>Foundation Math Hub</h1>
-      <p>Anytime learning for foundational mathematics</p>
+      <h2>Foundation Math Hub</h2>
+      <p>Take it step-by-step</p>
     </div>
+  </div>
+
+  <div class="menu-section">
+    <h4>TOPICS</h4>
+
+    <button class="menu-btn" onclick="showTopic('algebra')">
+      Algebraic Expressions
+    </button>
+
+    <button class="menu-btn disabled">
+      Fractions & Rational Expressions
+    </button>
+
+    <button class="menu-btn disabled">
+      Functions & Graphs
+    </button>
+  </div>
+</div>
+
+<div class="main-content">
+
+  <div class="welcome-card">
+    <h1>Welcome 👋</h1>
+    <p>
+      Revise first, then attempt the understanding check when you feel ready.
+    </p>
+  </div>
+
+  <div class="topic-card" id="algebra-topic">
+
+    <h2>Topic: Algebraic Expressions</h2>
+
+    <p class="difficulty">
+      Common difficulty: simplifying and combining like terms.
+    </p>
+
+    <h3>Watch</h3>
+
+    <a href="https://www.youtube.com/" target="_blank">
+      Watch: Introduction to Algebraic Expressions (5–8 min)
+    </a>
+
+    <h3>Guided Steps</h3>
+
+    <ol>
+      <li>Identify the like terms</li>
+      <li>Combine coefficients carefully</li>
+      <li>Simplify step-by-step</li>
+      <li>Check your final expression</li>
+    </ol>
+
+    <div class="practice-box">
+      <h3>Quick Practice</h3>
+
+      <p>Simplify:</p>
+      <p><strong>3x + 2x</strong></p>
+
+      <button onclick="showAnswer()" class="answer-btn">
+        Show Answer
+      </button>
+
+      <p id="answer" class="hidden-answer">
+        Answer: 5x
+      </p>
+    </div>
+
+    <a href="PASTE_YOUR_MICROSOFT_FORMS_LINK_HERE" target="_blank">
+      <button class="quiz-btn">
+        Submit Understanding Check
+      </button>
+    </a>
 
   </div>
-</header>
 
-<main class="container">
-
-  <!-- ================= PROGRESS PANEL ================= -->
-
-  <section class="panel" id="progressPanel">
-
-    <div class="row">
-      <h2>Your Progress</h2>
-
-      <button class="btn ghost" id="resetBtn">
-        Reset
-      </button>
-    </div>
-
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-
-    <p id="progressText">
-      0 / 3 Main Topics Completed
-    </p>
-
-  </section>
-
-  <!-- ================= HOME PAGE ================= -->
-
-  <section class="panel" id="homePage">
-
-    <h2>Choose a Topic</h2>
-
-    <p class="muted">
-      Select a topic to begin your learning journey.
-    </p>
-
-    <div class="grid" id="topicContainer"></div>
-
-  </section>
-
-  <!-- ================= SUBTOPIC PAGE ================= -->
-
-  <section class="panel hidden" id="subtopicPage">
-
-    <button class="btn ghost" id="backHome">
-      ← Back to Topics
-    </button>
-
-    <h2 id="topicTitle"></h2>
-
-    <p class="muted" id="topicDescription"></p>
-
-    <div class="subgrid" id="subtopicContainer"></div>
-
-  </section>
-
-  <!-- ================= LESSON PAGE ================= -->
-
-  <section class="panel hidden" id="lessonPage">
-
-    <button class="btn ghost" id="backSubtopics">
-      ← Back to Subtopics
-    </button>
-
-    <h2 id="lessonTitle"></h2>
-
-    <p class="muted" id="lessonFlow"></p>
-
-    <!-- Dynamic lesson content loads here -->
-    <div id="lessonContent"></div>
-
-  </section>
-
-</main>
+</div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
+```
+
+---
+
+## style.css
+
+```css
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  display: flex;
+}
+
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: white;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.logo {
+  background: #1e3a8a;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.brand h2 {
+  margin: 0;
+}
+
+.brand p {
+  margin: 0;
+  color: gray;
+  font-size: 14px;
+}
+
+.menu-section h4 {
+  color: gray;
+  font-size: 13px;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  background: #eef2ff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: bold;
+}
+
+.menu-btn:hover {
+  background: #dbeafe;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+.welcome-card,
+.topic-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.welcome-card h1 {
+  margin-top: 0;
+}
+
+.difficulty {
+  color: #666;
+}
+
+.practice-box {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.answer-btn,
+.quiz-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.answer-btn {
+  background: #dbeafe;
+}
+
+.quiz-btn {
+  margin-top: 20px;
+  background: #16a34a;
+  color: white;
+}
+
+.hidden-answer {
+  display: none;
+  margin-top: 15px;
+  font-weight: bold;
+}
+```
+
+---
+
+## script.js
+
+```javascript
+function showAnswer() {
+  document.getElementById("answer").style.display = "block";
+}
+
+function showTopic(topic) {
+  alert(topic + " selected.");
+}
+```
+
+---
+
+## Important
+
+Replace:
+
+```html
+PASTE_YOUR_MICROSOFT_FORMS_LINK_HERE
+```
+
+with your actual Microsoft Forms link.
+
+---
+
+## GitHub Upload Structure
+
+Your repository should contain ONLY:
+
+* index.html
+* style.css
+* script.js
+
+All in the same folder.
